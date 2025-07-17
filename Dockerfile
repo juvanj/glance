@@ -9,5 +9,8 @@ FROM alpine:3.21
 WORKDIR /app
 COPY --from=builder /app/glance .
 
+ARG VERSION
+LABEL version="${VERSION}"
+
 EXPOSE 8080/tcp
 ENTRYPOINT ["/app/glance", "--config", "/app/config/glance.yml"]
