@@ -28,12 +28,12 @@ jobs:
       - uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: ${{ secrets.GHCR_USERNAME }}
           password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Show actor
         run: |
-          echo "Actor: ${{ github.actor }}"
+          echo "Actor: ${{ secrects.GHCR_USERNAME }}"
           echo "Repository: ${{ github.repository }}"
 
       - uses: docker/build-push-action@v6
