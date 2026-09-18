@@ -33,7 +33,7 @@ jobs:
 
       - name: Show actor
         run: |
-          echo "Actor: ${{ secrects.GHCR_USERNAME }}"
+          echo "Actor: ${{ secrets.GHCR_USERNAME }}"
           echo "Repository: ${{ github.repository }}"
 
       - uses: docker/build-push-action@v6
