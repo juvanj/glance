@@ -31,6 +31,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
 
+      - name: Show actor
+        run: |
+          echo "Actor: ${{ github.actor }}"
+          echo "Repository: ${{ github.repository }}"
+
       - uses: docker/build-push-action@v6
         with:
           context: .
@@ -41,3 +46,8 @@ jobs:
             juvanj/glance:${{ github.ref_name }}
             ghcr.io/juvanj/glance:latest
             ghcr.io/juvanj/glance:${{ github.ref_name }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
